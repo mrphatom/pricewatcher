@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "PriceWatcher",
+  "version": "1.0.0",
+  "description": "Track product prices on Amazon, eBay, and major e-commerce sites. Get notified when prices drop.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "activeTab", "alarms", "notifications", "scripting"],
+  "host_permissions": ["<all_urls>"]
+}
